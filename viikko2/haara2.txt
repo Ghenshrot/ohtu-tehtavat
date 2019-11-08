@@ -1,0 +1,40 @@
+[opinnot@hot viikko2]$ git remote show origin
+Enter passphrase for key '/home/opinnot/.ssh/id_rsa': 
+Enter passphrase for key '/home/opinnot/.ssh/id_rsa': 
+Enter passphrase for key '/home/opinnot/.ssh/id_rsa': 
+* remote origin
+  Fetch URL: git@github.com:Ghenshrot/ohtu-tehtavat.git
+  Push  URL: git@github.com:Ghenshrot/ohtu-tehtavat.git
+  HEAD branch: master
+  Remote branches:
+    haara1 tracked
+    haara2 tracked
+    master tracked
+  Local branches configured for 'git pull':
+    haara1 merges with remote haara1
+    master merges with remote master
+  Local refs configured for 'git push':
+    haara1 pushes to haara1 (up to date)
+    master pushes to master (up to date)
+[opinnot@hot viikko2]$ git checkout haara2
+Branch 'haara2' set up to track remote branch 'haara2' from 'origin'.
+Switched to a new branch 'haara2'
+[opinnot@hot viikko2]$ git remote show origin
+Enter passphrase for key '/home/opinnot/.ssh/id_rsa': 
+* remote origin
+  Fetch URL: git@github.com:Ghenshrot/ohtu-tehtavat.git
+  Push  URL: git@github.com:Ghenshrot/ohtu-tehtavat.git
+  HEAD branch: master
+  Remote branches:
+    haara1 tracked
+    haara2 tracked
+    master tracked
+  Local branches configured for 'git pull':
+    haara1 merges with remote haara1
+    haara2 merges with remote haara2
+    master merges with remote master
+  Local refs configured for 'git push':
+    haara1 pushes to haara1 (up to date)
+    haara2 pushes to haara2 (local out of date)
+    master pushes to master (up to date)
+[opinnot@hot viikko2]$
