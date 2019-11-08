@@ -8,11 +8,11 @@ public class Kauppa {
     private ViitegeneraattoriRajapinta viitegeneraattori;
     private String kaupanTili;
 
-    public Kauppa() {
-        varasto = Varasto.getInstance();
-        pankki = Pankki.getInstance();
-        viitegeneraattori = Viitegeneraattori.getInstance();
-        kaupanTili = "33333-44455";
+    public Kauppa(VarastoRajapinta varasto, PankkiRajapinta pankki, ViitegeneraattoriRajapinta viitegeneraattori) {
+        this.varasto           = varasto;
+        this.pankki            = pankki;
+        this.viitegeneraattori = viitegeneraattori;
+        this.kaupanTili        = "33333-44455";
     }
 
     public void aloitaAsiointi() {
