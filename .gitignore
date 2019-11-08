@@ -1,3 +1,4 @@
 *.tmp
 *~
 
+/viikko2/Verkkokauppa1/.nb-gradle/
