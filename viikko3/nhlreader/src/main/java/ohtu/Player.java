@@ -32,8 +32,20 @@ public class Player {
         this.goals = goals;
     }
     
+    public int getGoals() {
+        return goals;
+    }
+    
     public void setAssists(int assists) {
         this.assists = assists;
+    }
+    
+    public int getAssists() {
+        return assists;
+    }
+    
+    public int getScore() {
+        return goals + assists;
     }
 
     @Override

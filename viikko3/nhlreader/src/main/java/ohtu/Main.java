@@ -18,9 +18,9 @@ public class Main {
         
         String country = "FIN";
         System.out.println("Players from " + country + ":");
-        getPlayersByNationality(country).forEach(p -> {
-            System.out.println(p);
-        });
+        List<Player> players = getPlayersByNationality(country);
+        players.sort((a, b) -> b.getScore() - a.getScore());
+        printPlayers(players);
     }
     
     public static void readPlayerData() throws IOException {
@@ -30,6 +30,18 @@ public class Main {
         Gson mapper = new Gson();
         Type t = new TypeToken<Collection<Player>>() {}.getType();
         all_players = mapper.fromJson(player_data, t);
+    }
+    
+    public static void printPlayers(List<Player> players) {
+        players.forEach(p -> {
+            System.out.format("%-30s %3s %3d + %3d = %3d\n",
+                    p.getName(),
+                    p.getNationality(),
+                    p.getGoals(),
+                    p.getAssists(),
+                    p.getScore()
+            );
+        });
     }
     
     public static List<Player> getPlayersByNationality(String nationality) {
