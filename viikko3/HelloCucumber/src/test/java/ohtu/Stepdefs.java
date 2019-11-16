@@ -29,4 +29,8 @@ public class Stepdefs {
          counter.increment(val);       
     }    
 
+    @When("it is reset")
+    public void itIsReset() {
+        counter.reset();
+    }
 }
