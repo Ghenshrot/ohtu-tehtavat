@@ -30,10 +30,26 @@ public class AuthenticationService {
             status.addError("username is already taken");
         }
 
-        if (username.length()<3 ) {
+        if (username.length() < 3 ) {
             status.addError("username should have at least 3 characters");
         }
+        
+        if (!username.matches("^[a-z]*$")) {
+            status.addError("username must contain only characters a-z");
+        }
+        
+        if (!password.equals(passwordConfirmation)) {
+            status.addError("password and password confirmation do not match");
+        }
 
+        if (password.length() < 8) {
+            status.addError("password should have at least 8 characters");
+        }
+        
+        if (password.matches("^\\p{IsAlphabetic}*$")) {
+            status.addError("password must contain non-alphabetic characters");
+        }
+        
         if (status.isOk()) {
             userDao.add(new User(username, password));
         }
