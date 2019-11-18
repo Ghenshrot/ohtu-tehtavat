@@ -42,6 +42,10 @@ public class AuthenticationService {
             return true;
         }
         
+        if (!username.matches("^[a-z]*$")) {
+            return true;
+        }
+        
         if (password.length() < 8) {
             return true;
         }
