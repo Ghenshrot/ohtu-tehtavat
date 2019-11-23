@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class Varasto implements VarastoRajapinta {
 
-    private KirjanpitoRajapinta kirjanpito;
-    private HashMap<Tuote, Integer> saldot;  
+    private final KirjanpitoRajapinta kirjanpito;
+    private final HashMap<Tuote, Integer> saldot;  
     
     @Autowired
     public Varasto(KirjanpitoRajapinta kirjanpito) {
         this.kirjanpito = kirjanpito;
-        saldot = new HashMap<Tuote, Integer>();
+        saldot = new HashMap<>();
         alustaTuotteet();
     }
             
