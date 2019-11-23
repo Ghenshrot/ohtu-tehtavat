@@ -40,5 +40,20 @@ public class KassapaateTest {
         verify(kortti, times(1)).getSaldo();
         verify(kortti, times(0)).osta(anyInt());
     }
-      
+    
+    @Test
+    public void kortilleLatausLisaaSaldoaJosMaaraOnPositiivinen() {
+        when(kortti.getSaldo()).thenReturn(10);
+        kassa.lataa(kortti, 1);
+        
+        verify(kortti, times(1)).lataa(1);
+    }
+    
+    @Test
+    public void kortilleLatausEiLisaaSaldoaJosMaaraOnNegatiivinen() {
+        when(kortti.getSaldo()).thenReturn(10);
+        kassa.lataa(kortti, -1);
+        
+        verify(kortti, times(0)).lataa(anyInt());
+    }
 }
