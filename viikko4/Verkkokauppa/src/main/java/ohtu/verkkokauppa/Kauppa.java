@@ -19,6 +19,10 @@ public class Kauppa {
         this.viitegeneraattori = viitegeneraattori;
         this.kaupanTili        = "33333-44455";
     }
+    
+    public String getKaupanTili() {
+        return this.kaupanTili;
+    }
 
     public void aloitaAsiointi() {
         ostoskori = new Ostoskori();
