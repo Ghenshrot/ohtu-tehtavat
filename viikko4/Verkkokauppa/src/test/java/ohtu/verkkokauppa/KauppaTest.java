@@ -127,5 +127,27 @@ public class KauppaTest {
             verify(pankki).tilisiirto(anyString(), eq(viiteNumero + i), anyString(), anyString(), anyInt());
         }
     }
+    
+    @Test
+    public void koristaPoistettuTuoteEiNayOstoksenHinnassa() {
+        kauppa.aloitaAsiointi();
+        kauppa.lisaaKoriin(maidonId);
+        kauppa.lisaaKoriin(kossunId);
+        kauppa.poistaKorista(maidonId);
+        kauppa.tilimaksu(tilinOmistaja, tiliNumero);
+
+        verify(pankki).tilisiirto(tilinOmistaja, viiteNumero, tiliNumero, kauppa.getKaupanTili(), kossunHinta);
+    }
+
+    @Test
+    public void koristaPoistettuVaaraTuoteEiNayOstoksenHinnassa() {
+        kauppa.aloitaAsiointi();
+        kauppa.lisaaKoriin(kossunId);
+        kauppa.poistaKorista(kaljanId);
+        kauppa.tilimaksu(tilinOmistaja, tiliNumero);
+
+        verify(pankki).tilisiirto(tilinOmistaja, viiteNumero, tiliNumero, kauppa.getKaupanTili(), kossunHinta);
+    }
+
 }
 
