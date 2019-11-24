@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'Verkkokauppa1'
+rootProject.name = 'Verkkokauppa'
