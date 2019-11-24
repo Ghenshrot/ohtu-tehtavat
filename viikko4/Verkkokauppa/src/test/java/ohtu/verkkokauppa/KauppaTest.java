@@ -30,7 +30,15 @@ public class KauppaTest {
         pankki = mock(Pankki.class);
         
         viite = mock(Viitegeneraattori.class);
-        when(viite.uusi()).thenReturn(viiteNumero);
+        int i = 0;
+        when(viite.uusi())
+                .thenReturn(viiteNumero + i++)
+                .thenReturn(viiteNumero + i++)
+                .thenReturn(viiteNumero + i++)
+                .thenReturn(viiteNumero + i++)
+                .thenReturn(viiteNumero + i++)
+                .thenReturn(viiteNumero + i++)
+                .thenReturn(viiteNumero + i++);
 
         varasto = mock(Varasto.class);
         
@@ -91,6 +99,33 @@ public class KauppaTest {
         kauppa.tilimaksu(tilinOmistaja, tiliNumero);
 
         verify(pankki).tilisiirto(tilinOmistaja, viiteNumero, tiliNumero, kauppa.getKaupanTili(), kossunHinta);
+    }
+    
+    @Test
+    public void edellisenOstoksenHintaEiNayUudenOstoksenHinnassa() {
+        kauppa.aloitaAsiointi();
+        kauppa.lisaaKoriin(maidonId);
+        kauppa.tilimaksu(tilinOmistaja, tiliNumero);
+        
+        verify(pankki).tilisiirto(anyString(), anyInt(), anyString(), anyString(), eq(maidonHinta));
+
+        kauppa.aloitaAsiointi();
+        kauppa.lisaaKoriin(kossunId);
+        kauppa.tilimaksu(tilinOmistaja, tiliNumero);
+
+        verify(pankki).tilisiirto(anyString(), anyInt(), anyString(), anyString(), eq(kossunHinta));
+        
+    }
+    
+    @Test
+    public void kauppaPyytaaUudenViitenumeronJokaiselleMaksutapahtumalle() {
+        for (int i = 0; i < 3; i++) {
+            kauppa.aloitaAsiointi();
+            kauppa.lisaaKoriin(kossunId);
+            kauppa.tilimaksu(tilinOmistaja, tiliNumero);
+
+            verify(pankki).tilisiirto(anyString(), eq(viiteNumero + i), anyString(), anyString(), anyInt());
+        }
     }
 }
 
