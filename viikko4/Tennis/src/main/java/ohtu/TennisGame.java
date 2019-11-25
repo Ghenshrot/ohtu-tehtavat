@@ -1,25 +1,25 @@
 package ohtu;
 
 public class TennisGame {
-    private int player1Points = 0;
-    private int player2Points = 0;
-    private final String player1Name;
-    private final String player2Name;
+    private int serversPoints   = 0;
+    private int receiversPoints = 0;
+    private final String serversName;
+    private final String receiversName;
     // The possible scores before "advantage":
     private final String[] scoreNames = { "Love", "Fifteen", "Thirty", "Forty" };
     
 
-    public TennisGame(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
+    public TennisGame(String serversName, String receiversName) {
+        this.serversName   = serversName;
+        this.receiversName = receiversName;
     }
 
     
     public void wonPoint(String playerName) {
-        if (playerName.equals(player1Name)) {
-            player1Points += 1;
+        if (playerName.equals(serversName)) {
+            serversPoints += 1;
         } else {
-            player2Points += 1;
+            receiversPoints += 1;
         }
     }
 
@@ -33,28 +33,28 @@ public class TennisGame {
         if (score != null) {
             return score;
         }
-        return getScoreName(player1Points) + "-" + getScoreName(player2Points);
+        return getScoreName(serversPoints) + "-" + getScoreName(receiversPoints);
     }
 
     
     private String checkForEqualScores() {
-        if (player1Points != player2Points) {
+        if (serversPoints != receiversPoints) {
             return null;
         }
-        if (player1Points >= scoreNames.length) {
+        if (serversPoints >= scoreNames.length) {
             return "Deuce";
         }
-        return getScoreName(player1Points) + "-All";
+        return getScoreName(serversPoints) + "-All";
     }
 
     
     private String checkForAdvantageAndWin() {
-        if (!isAdvantage(player1Points) && !isAdvantage(player2Points)) {
+        if (!isAdvantage(serversPoints) && !isAdvantage(receiversPoints)) {
             return null;
         }
 
-        int pointsDiff = player1Points - player2Points;
-        String winningPlayer = pointsDiff > 0 ? player1Name : player2Name;
+        int pointsDiff = serversPoints - receiversPoints;
+        String winningPlayer = pointsDiff > 0 ? serversName : receiversName;
 
         if (Math.abs(pointsDiff) == 1) {
             return "Advantage " + winningPlayer;
