@@ -19,9 +19,7 @@ public class Erotus extends Komento {
     }
 
     @Override
-    public void suorita() {
-        talletaUndoaVarten();
-        getSovellus().miinus(getKayttoliittyma().getSyote());
-        getKayttoliittyma().paivitaTulos();
+    protected void suoritaKomento(Kayttoliittyma kayttoliittyma, Sovelluslogiikka sovellus) {
+        sovellus.miinus(kayttoliittyma.getSyote());
     }
 }

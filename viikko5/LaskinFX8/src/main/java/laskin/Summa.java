@@ -19,9 +19,7 @@ public class Summa extends Komento {
     }
 
     @Override
-    public void suorita() {
-        talletaUndoaVarten();
-        getSovellus().plus(getKayttoliittyma().getSyote());
-        getKayttoliittyma().paivitaTulos();
+    protected void suoritaKomento(Kayttoliittyma kayttoliittyma, Sovelluslogiikka sovellus) {
+        sovellus.plus(kayttoliittyma.getSyote());
     }
 }

@@ -24,23 +24,17 @@ public abstract class Komento {
         this.edellinenArvo  = 0;
     }
     
-    public abstract void suorita();
+    public void suorita() {
+        this.edellinenArvo = sovellus.tulos();
+        suoritaKomento(kayttoliittyma, sovellus);
+        kayttoliittyma.paivitaTulos();
+    }
+
+    protected abstract void suoritaKomento(Kayttoliittyma kayttoliittyma, Sovelluslogiikka sovellus);
     
     public void peru() {
         sovellus.nollaa();
         sovellus.plus(edellinenArvo);
         kayttoliittyma.paivitaTulos();
-    }
-
-    protected Kayttoliittyma getKayttoliittyma() {
-        return kayttoliittyma;
-    }
-    
-    protected Sovelluslogiikka getSovellus() {
-        return sovellus;
-    }
-    
-    protected void talletaUndoaVarten() {
-        this.edellinenArvo = sovellus.tulos();
     }
 }

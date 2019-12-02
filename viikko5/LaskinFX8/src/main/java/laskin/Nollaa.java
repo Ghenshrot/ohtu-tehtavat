@@ -19,9 +19,7 @@ public class Nollaa extends Komento {
     }
 
     @Override
-    public void suorita() {
-        talletaUndoaVarten();
-        getSovellus().nollaa();
-        getKayttoliittyma().paivitaTulos();
+    protected void suoritaKomento(Kayttoliittyma kayttoliittyma, Sovelluslogiikka sovellus) {
+        sovellus.nollaa();
     }
 }
