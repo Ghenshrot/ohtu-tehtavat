@@ -5,18 +5,14 @@
  */
 package laskin;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-
-
 /**
  *
  * @author Joni Yrjänä <joni.yrjana@helsinki.fi>
  */
 public abstract class Komento {
-    private Kayttoliittyma   kayttoliittyma;
-    private Sovelluslogiikka sovellus;
-    private int              edellinenArvo;
+    private final Kayttoliittyma   kayttoliittyma;
+    private final Sovelluslogiikka sovellus;
+    private int                    edellinenArvo;
     
     public Komento(Kayttoliittyma kayttoliittyma, Sovelluslogiikka sovellus) {
         this.kayttoliittyma = kayttoliittyma;

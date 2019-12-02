@@ -13,11 +13,11 @@ import javafx.scene.control.TextField;
  * @author Joni Yrjänä <joni.yrjana@helsinki.fi>
  */
 public class Kayttoliittyma {
-    private TextField        tuloskentta;
-    private TextField        syotekentta;
-    private Button           nollaa;
-    private Button           undo;
-    private Sovelluslogiikka sovellus;
+    private final TextField        tuloskentta;
+    private final TextField        syotekentta;
+    private final Button           nollaa;
+    private final Button           undo;
+    private final Sovelluslogiikka sovellus;
     
     public Kayttoliittyma(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
         this.tuloskentta   = tuloskentta;

@@ -5,9 +5,6 @@
  */
 package laskin;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-
 /**
  *
  * @author Joni Yrjänä <joni.yrjana@helsinki.fi>

@@ -8,11 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class Tapahtumankuuntelija implements EventHandler {
-    private Button undo;
-    private Sovelluslogiikka sovellus;
+    private final Button           undo;
+    private final Sovelluslogiikka sovellus;
     
     private Map<Button, Komento> komennot;
-    private Komento edellinen = null;
+    private Komento              edellinen = null;
  
 
     public Tapahtumankuuntelija(TextField tuloskentta, TextField syotekentta, Button plus, Button miinus, Button nollaa, Button undo) {
