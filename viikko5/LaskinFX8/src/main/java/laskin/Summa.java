@@ -14,14 +14,14 @@ import javafx.scene.control.TextField;
  */
 public class Summa extends Komento {
 
-    public Summa(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
-        super(tuloskentta, syotekentta, nollaa, undo, sovellus);
+    public Summa(Kayttoliittyma kayttoliittyma, Sovelluslogiikka sovellus) {
+        super(kayttoliittyma, sovellus);
     }
 
     @Override
     public void suorita() {
         talletaUndoaVarten();
-        getSovellus().plus(getLuku2());
-        tulos();
+        getSovellus().plus(getKayttoliittyma().getSyote());
+        getKayttoliittyma().paivitaTulos();
     }
 }

@@ -14,14 +14,14 @@ import javafx.scene.control.TextField;
  */
 public class Nollaa extends Komento {
 
-    public Nollaa(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
-        super(tuloskentta, syotekentta, nollaa, undo, sovellus);
+    public Nollaa(Kayttoliittyma kayttoliittyma, Sovelluslogiikka sovellus) {
+        super(kayttoliittyma, sovellus);
     }
 
     @Override
     public void suorita() {
         talletaUndoaVarten();
         getSovellus().nollaa();
-        tulos();
+        getKayttoliittyma().paivitaTulos();
     }
 }

@@ -14,14 +14,14 @@ import javafx.scene.control.TextField;
  */
 public class Erotus extends Komento {
 
-    public Erotus(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
-        super(tuloskentta, syotekentta, nollaa, undo, sovellus);
+    public Erotus(Kayttoliittyma kayttoliittyma, Sovelluslogiikka sovellus) {
+        super(kayttoliittyma, sovellus);
     }
 
     @Override
     public void suorita() {
         talletaUndoaVarten();
-        getSovellus().miinus(getLuku2());
-        tulos();
+        getSovellus().miinus(getKayttoliittyma().getSyote());
+        getKayttoliittyma().paivitaTulos();
     }
 }

@@ -18,10 +18,11 @@ public class Tapahtumankuuntelija implements EventHandler {
     public Tapahtumankuuntelija(TextField tuloskentta, TextField syotekentta, Button plus, Button miinus, Button nollaa, Button undo) {
         this.undo = undo;
         this.sovellus = new Sovelluslogiikka();
+        Kayttoliittyma kayttis = new Kayttoliittyma(tuloskentta, syotekentta, nollaa, undo, sovellus);
         komennot = new HashMap<>();
-        komennot.put(plus,   new Summa(tuloskentta,  syotekentta, nollaa, undo, sovellus) );
-        komennot.put(miinus, new Erotus(tuloskentta, syotekentta, nollaa, undo, sovellus) );
-        komennot.put(nollaa, new Nollaa(tuloskentta, syotekentta, nollaa, undo, sovellus) );
+        komennot.put(plus,   new Summa(kayttis,  sovellus) );
+        komennot.put(miinus, new Erotus(kayttis, sovellus) );
+        komennot.put(nollaa, new Nollaa(kayttis, sovellus) );
     }
     
     @Override
