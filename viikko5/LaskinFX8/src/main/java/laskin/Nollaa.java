@@ -20,13 +20,8 @@ public class Nollaa extends Komento {
 
     @Override
     public void suorita() {
+        talletaUndoaVarten();
         getSovellus().nollaa();
         tulos();
     }
-
-    @Override
-    public void peru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

@@ -19,20 +19,31 @@ public abstract class Komento {
     private Button           nollaa;
     private Button           undo;
     private Sovelluslogiikka sovellus;
+    private int              edellinenArvo;
     
     public Komento(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
-        this.tuloskentta = tuloskentta;
-        this.syotekentta = syotekentta;
-        this.nollaa      = nollaa;
-        this.undo        = undo;
-        this.sovellus    = sovellus;
+        this.tuloskentta   = tuloskentta;
+        this.syotekentta   = syotekentta;
+        this.nollaa        = nollaa;
+        this.undo          = undo;
+        this.sovellus      = sovellus;
+        this.edellinenArvo = 0;
     }
     
     public abstract void suorita();
-    public abstract void peru();
+    
+    public void peru() {
+        sovellus.nollaa();
+        sovellus.plus(edellinenArvo);
+        tulos();
+    }
     
     protected Sovelluslogiikka getSovellus() {
         return sovellus;
+    }
+    
+    protected void talletaUndoaVarten() {
+        this.edellinenArvo = sovellus.tulos();
     }
     
     private int getLuku(TextField kentta) {

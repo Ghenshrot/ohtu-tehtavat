@@ -20,13 +20,8 @@ public class Summa extends Komento {
 
     @Override
     public void suorita() {
+        talletaUndoaVarten();
         getSovellus().plus(getLuku2());
         tulos();
     }
-
-    @Override
-    public void peru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
