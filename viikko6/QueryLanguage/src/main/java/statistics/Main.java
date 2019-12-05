@@ -38,7 +38,7 @@ public class Main {
             m = new Or( new HasAtLeast(20, "goals"),
                         new HasAtLeast(20, "assists")
             );
-        } else {
+        } else if (false) {
             m = new And(
                 new HasAtLeast(20, "points"),
                 new Or( 
@@ -47,6 +47,14 @@ public class Main {
                     new PlaysIn("NJD")
                 )
             );             
+        } else {
+            QueryBuilder query = new QueryBuilder();
+            if (false)
+                m = query.playsIn("NYR").build();
+            else
+                m = query.playsIn("NYR")
+                        .hasAtLeast(5, "goals")
+                        .hasFewerThan(10, "goals").build();
         }
         for (Player player : stats.matches(m)) {
             System.out.println(player);
