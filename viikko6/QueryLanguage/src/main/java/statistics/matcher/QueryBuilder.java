@@ -17,7 +17,9 @@ public class QueryBuilder {
     }
     
     public Matcher build() {
-        return matcher;
+        Matcher rv = matcher;
+        matcher = new All();
+        return rv;
     }
     
     public QueryBuilder All() {
@@ -40,4 +42,8 @@ public class QueryBuilder {
         return this;
     }
 
+    public QueryBuilder oneOf(Matcher m1, Matcher m2) {
+        this.matcher = new And(this.matcher, new Or(m1, m2));
+        return this;
+    }
 }
