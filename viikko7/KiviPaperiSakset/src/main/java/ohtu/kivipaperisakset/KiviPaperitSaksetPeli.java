@@ -13,8 +13,8 @@ import java.util.List;
  * @author Joni Yrjänä <joni.yrjana@helsinki.fi>
  */
 public class KiviPaperitSaksetPeli {
-    public static Pelaaja annaIhmispelaaja(Kayttoliittyma kayttis) {
-        return new IhmisPelaaja(kayttis);
+    public static Pelaaja annaIhmispelaaja(Kayttoliittyma kayttis, String nimi) {
+        return new IhmisPelaaja(kayttis, nimi);
     }
     
     public static Pelaaja annaTekoalyPelaaja(Kayttoliittyma kayttis) {

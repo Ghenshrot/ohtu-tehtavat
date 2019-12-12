@@ -2,24 +2,15 @@ package ohtu.kivipaperisakset;
 
 import java.util.List;
 
-public class IhmisPelaaja implements Pelaaja {
+public class IhmisPelaaja extends Pelaaja {
 
-    private final Kayttoliittyma kayttis;
-    
-    public IhmisPelaaja(Kayttoliittyma kayttis) {
-        this.kayttis = kayttis;
+    public IhmisPelaaja(Kayttoliittyma kayttis, String nimi) {
+        super(kayttis, nimi);
     }
-
+    
     @Override
     public String annaSiirto() {
-        return kayttis.lueSyote("Pelaajan siirto");
-    }
-    
-    @Override
-    public void naytaSiirto(String siirto) {
-    }
-
-    @Override
-    public void asetaToistenPelaajienSiirrot(List<String> siirrot) {
+        String space = this.getNimi().length() == 0 ? "" : " ";
+        return getKayttoliittyma().lueSyote("Pelaajan " + this.getNimi() + space + "siirto");
     }
 }

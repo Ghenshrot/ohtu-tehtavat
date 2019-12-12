@@ -9,16 +9,14 @@ package ohtu.kivipaperisakset;
  *
  * @author Joni Yrjänä <joni.yrjana@helsinki.fi>
  */
-public abstract class TietokonePelaaja implements Pelaaja {
-    
-    private final Kayttoliittyma kayttis;
+public abstract class TietokonePelaaja extends Pelaaja {
     
     public TietokonePelaaja(Kayttoliittyma kayttis) {
-        this.kayttis = kayttis;
+        super(kayttis, "Tietokone");
     }
     
     @Override
     public void naytaSiirto(String siirto) {
-        kayttis.naytaTeksti("Tietokone valitsi: " + siirto);
+        getKayttoliittyma().naytaTeksti(this.getNimi() + " valitsi: " + siirto);
     }
 }

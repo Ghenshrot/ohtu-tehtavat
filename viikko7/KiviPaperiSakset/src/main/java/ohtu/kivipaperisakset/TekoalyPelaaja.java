@@ -24,8 +24,4 @@ public class TekoalyPelaaja extends TietokonePelaaja {
             return "s";
         }
     }
-
-    @Override
-    public void asetaToistenPelaajienSiirrot(List<String> siirrot) {
-    }
 }

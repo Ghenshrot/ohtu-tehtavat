@@ -21,13 +21,13 @@ public class Paaohjelma {
             Tuomari tuomari = new Tuomari();
             List<Pelaaja> pelaajat = new ArrayList<>();
             if (vastaus.endsWith("a")) {
-                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis));
-                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis));
+                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis, "A"));
+                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis, "B"));
             } else if (vastaus.endsWith("b")) {
-                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis));
+                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis, ""));
                 pelaajat.add(KiviPaperitSaksetPeli.annaTekoalyPelaaja(kayttis));
             } else if (vastaus.endsWith("c")) {
-                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis));
+                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis, ""));
                 pelaajat.add(KiviPaperitSaksetPeli.annaParempiTekoAlyPelaaja(kayttis));
             } else {
                 break;
