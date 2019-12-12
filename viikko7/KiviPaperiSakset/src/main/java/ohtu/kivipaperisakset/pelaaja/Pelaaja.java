@@ -15,10 +15,12 @@ import ohtu.kivipaperisakset.kayttoliittyma.Kayttoliittyma;
 public abstract class Pelaaja {
     private final Kayttoliittyma kayttis;
     private final String         nimi;
+    private int                  pisteet;
     
     public Pelaaja(Kayttoliittyma kayttis, String nimi) {
         this.kayttis = kayttis;
         this.nimi    = nimi;
+        this.pisteet = 0;
     }
     public abstract String annaSiirto();
     
@@ -34,5 +36,13 @@ public abstract class Pelaaja {
     
     public String getNimi() {
         return nimi;
+    }
+    
+    public void lisaaPisteita(int maara) {
+        this.pisteet += maara;
+    }
+    
+    public int getPisteet() {
+        return this.pisteet;
     }
 }

@@ -39,7 +39,7 @@ public class Paaohjelma {
                 break;
             }
             
-            Tuomari tuomari = new Tuomari();
+            Tuomari tuomari = new Tuomari(pelaajat);
             KiviPaperiSaksetPeli peli = new KiviPaperiSaksetPeli(kayttis, tuomari, pelaajat);
             peli.pelaa();
         }

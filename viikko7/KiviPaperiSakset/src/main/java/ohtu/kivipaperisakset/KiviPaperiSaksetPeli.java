@@ -34,7 +34,7 @@ public class KiviPaperiSaksetPeli {
                 break;
             }
             
-            tuomari.kirjaaSiirto(siirrot.get(0), siirrot.get(1));
+            tuomari.kirjaaSiirrot(siirrot);
             kayttis.naytaTeksti(tuomari.toString());
             kayttis.naytaTeksti("");
 
