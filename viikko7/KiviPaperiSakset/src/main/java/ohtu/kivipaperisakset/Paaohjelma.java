@@ -8,10 +8,8 @@ import java.util.Map;
 public class Paaohjelma {
 
     private interface Pelityyppi {
-        public void alusta(Kayttoliittyma kayttis, List<Pelaaja> pelaajat);
+        public boolean alusta(Kayttoliittyma kayttis, List<Pelaaja> pelaajat);
     }
-    
-    private static boolean juoksee;
     
     public static void main(String[] args) {
         Map<String, Pelityyppi> pelityypit = new HashMap<>();
@@ -21,8 +19,7 @@ public class Paaohjelma {
 
         Kayttoliittyma kayttis = new KonsoliKayttoliittyma(System.out, System.in);
         
-        juoksee = true;
-        while (juoksee) {
+        while (true) {
             kayttis.naytaTeksti(
                     "\nValitse pelataanko"
                     + "\n (a) ihmistä vastaan "
@@ -34,8 +31,7 @@ public class Paaohjelma {
             Pelityyppi pelityyppi = pelityypit.getOrDefault(vastaus.trim(), Paaohjelma::alustaTuntematonPelityyppi);
 
             List<Pelaaja> pelaajat = new ArrayList<>();
-            pelityyppi.alusta(kayttis, pelaajat);
-            if (!juoksee) {
+            if (!pelityyppi.alusta(kayttis, pelaajat)) {
                 break;
             }
             
@@ -45,22 +41,25 @@ public class Paaohjelma {
         }
     }
     
-    private static void alustaPeliIhmistaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
+    private static boolean alustaPeliIhmistaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
         pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, "A"));
         pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, "B"));
+        return true;
     }
 
-    private static void alustaPeliTekoalyaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
+    private static boolean alustaPeliTekoalyaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
         pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, ""));
         pelaajat.add(KiviPaperiSaksetPeli.annaTekoalyPelaaja(kayttis));
+        return true;
     }
     
-    private static void alustaPeliParannettuaTekoalyaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
+    private static boolean alustaPeliParannettuaTekoalyaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
         pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, ""));
         pelaajat.add(KiviPaperiSaksetPeli.annaParempiTekoAlyPelaaja(kayttis));
+        return true;
     }
 
-    private static void alustaTuntematonPelityyppi(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
-        juoksee = false;
+    private static boolean alustaTuntematonPelityyppi(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
+        return false;
     }
 }
