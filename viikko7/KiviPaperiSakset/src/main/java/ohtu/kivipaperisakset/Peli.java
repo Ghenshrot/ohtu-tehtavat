@@ -14,15 +14,21 @@ import java.util.List;
  *
  * @author Joni Yrjänä <joni.yrjana@helsinki.fi>
  */
-public class KiviPaperiSaksetPeli {
+public class Peli {
+    private final String         nimi;
     private final Kayttoliittyma kayttis;
     private final Tuomari        tuomari;
     private final List<Pelaaja>  pelaajat;
     
-    public KiviPaperiSaksetPeli(Kayttoliittyma kayttis, Tuomari tuomari, List<Pelaaja> pelaajat) {
+    public Peli(String nimi, Kayttoliittyma kayttis, Tuomari tuomari, List<Pelaaja> pelaajat) {
+        this.nimi     = nimi;
         this.kayttis  = kayttis;
         this.tuomari  = tuomari;
         this.pelaajat = pelaajat;
+    }
+    
+    public String getNimi() {
+        return nimi;
     }
     
     public void pelaa() {
