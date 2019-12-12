@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import ohtu.kivipaperisakset.pelaaja.PelaajaTehdas;
 
 public class Paaohjelma {
@@ -20,6 +21,8 @@ public class Paaohjelma {
         pelityypit.put("a", Paaohjelma::alustaPeliIhmistaVastaan);
         pelityypit.put("b", Paaohjelma::alustaPeliTekoalyaVastaan);
         pelityypit.put("c", Paaohjelma::alustaPeliParannettuaTekoalyaVastaan);
+        pelityypit.put("d", Paaohjelma::alustaPeliKahtaSatunnaistaTekoalyaVastaan);
+        pelityypit.put("e", Paaohjelma::alustaPeliSatunnaistaMaaraaSatunnaistaTekoalyaVastaan);
 
         Kayttoliittyma kayttis = new KonsoliKayttoliittyma(System.out, System.in);
         
@@ -29,6 +32,8 @@ public class Paaohjelma {
                     + "\n (a) ihmistä vastaan "
                     + "\n (b) tekoälyä vastaan"
                     + "\n (c) parannettua tekoälyä vastaan"
+                    + "\n (d) kahta satunnaista tekoälyä vastaan"
+                    + "\n (e) satunnaista määrää (3..10) satunnaista tekoälyä vastaan"
                     + "\nmuilla valinnoilla lopetataan");
 
             String vastaus = kayttis.lueSyote("");
@@ -63,6 +68,28 @@ public class Paaohjelma {
         return true;
     }
 
+    private static boolean alustaPeliKahtaSatunnaistaTekoalyaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
+        return alustaPeliSatunnaisiaTekoalyjaVastaan(kayttis, pelaajat, 2);
+    }
+
+    private static boolean alustaPeliSatunnaistaMaaraaSatunnaistaTekoalyaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
+        Random r = new Random();
+        return alustaPeliSatunnaisiaTekoalyjaVastaan(kayttis, pelaajat, 3 + r.nextInt(7));
+    }
+ 
+    private static boolean alustaPeliSatunnaisiaTekoalyjaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat, int tietokonepelaajienLkm) {
+        pelaajat.add(PelaajaTehdas.annaIhmispelaaja(kayttis, ""));
+        Random r = new Random();
+        for (int i = 0; i < tietokonepelaajienLkm; i++) {
+            if (r.nextBoolean()) {
+                pelaajat.add(PelaajaTehdas.annaTekoalyPelaaja(kayttis));
+            } else {
+                pelaajat.add(PelaajaTehdas.annaParempiTekoAlyPelaaja(kayttis));
+            }
+        }
+        return true;
+    }
+    
     private static boolean alustaTuntematonPelityyppi(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
         return false;
     }
