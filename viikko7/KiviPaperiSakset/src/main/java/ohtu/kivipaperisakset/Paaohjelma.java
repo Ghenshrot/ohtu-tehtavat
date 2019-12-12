@@ -21,19 +21,19 @@ public class Paaohjelma {
             Tuomari tuomari = new Tuomari();
             List<Pelaaja> pelaajat = new ArrayList<>();
             if (vastaus.endsWith("a")) {
-                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis, "A"));
-                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis, "B"));
+                pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, "A"));
+                pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, "B"));
             } else if (vastaus.endsWith("b")) {
-                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis, ""));
-                pelaajat.add(KiviPaperitSaksetPeli.annaTekoalyPelaaja(kayttis));
+                pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, ""));
+                pelaajat.add(KiviPaperiSaksetPeli.annaTekoalyPelaaja(kayttis));
             } else if (vastaus.endsWith("c")) {
-                pelaajat.add(KiviPaperitSaksetPeli.annaIhmispelaaja(kayttis, ""));
-                pelaajat.add(KiviPaperitSaksetPeli.annaParempiTekoAlyPelaaja(kayttis));
+                pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, ""));
+                pelaajat.add(KiviPaperiSaksetPeli.annaParempiTekoAlyPelaaja(kayttis));
             } else {
                 break;
             }
             
-            KiviPaperitSaksetPeli peli = new KiviPaperitSaksetPeli(kayttis, tuomari, pelaajat);
+            KiviPaperiSaksetPeli peli = new KiviPaperiSaksetPeli(kayttis, tuomari, pelaajat);
             peli.pelaa();
         }
     }

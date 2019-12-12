@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Joni Yrjänä <joni.yrjana@helsinki.fi>
  */
-public class KiviPaperitSaksetPeli {
+public class KiviPaperiSaksetPeli {
     public static Pelaaja annaIhmispelaaja(Kayttoliittyma kayttis, String nimi) {
         return new IhmisPelaaja(kayttis, nimi);
     }
@@ -30,7 +30,7 @@ public class KiviPaperitSaksetPeli {
     private final Tuomari        tuomari;
     private final List<Pelaaja>  pelaajat;
     
-    public KiviPaperitSaksetPeli(Kayttoliittyma kayttis, Tuomari tuomari, List<Pelaaja> pelaajat) {
+    public KiviPaperiSaksetPeli(Kayttoliittyma kayttis, Tuomari tuomari, List<Pelaaja> pelaajat) {
         this.kayttis  = kayttis;
         this.tuomari  = tuomari;
         this.pelaajat = pelaajat;
