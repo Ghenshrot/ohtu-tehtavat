@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ParempiTekoalyPelaaja extends TietokonePelaaja {
 
-    private String[] muisti;
+    private final String[] muisti;
     private int vapaaMuistiIndeksi;
 
     public ParempiTekoalyPelaaja(Kayttoliittyma kayttis, int muistinKoko) {

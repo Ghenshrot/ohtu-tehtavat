@@ -33,9 +33,7 @@ public class Paaohjelma {
                 break;
             }
             
-            kayttis.naytaTeksti("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
-
-            KiviPaperitSaksetPeli peli = new KiviPaperitSaksetPeli(tuomari, pelaajat);
+            KiviPaperitSaksetPeli peli = new KiviPaperitSaksetPeli(kayttis, tuomari, pelaajat);
             peli.pelaa();
         }
     }

@@ -6,9 +6,7 @@
 package ohtu.kivipaperisakset;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  *
@@ -28,34 +26,28 @@ public class KiviPaperitSaksetPeli {
     }
 
     
-    private final Tuomari       tuomari;
-    private final List<Pelaaja> pelaajat;
+    private final Kayttoliittyma kayttis;
+    private final Tuomari        tuomari;
+    private final List<Pelaaja>  pelaajat;
     
-    public KiviPaperitSaksetPeli(Tuomari tuomari, List<Pelaaja> pelaajat) {
-        this.tuomari = tuomari;
+    public KiviPaperitSaksetPeli(Kayttoliittyma kayttis, Tuomari tuomari, List<Pelaaja> pelaajat) {
+        this.kayttis  = kayttis;
+        this.tuomari  = tuomari;
         this.pelaajat = pelaajat;
     }
     
     public void pelaa() {
+        kayttis.naytaTeksti("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
+
         while (true) {
-            List<String> siirrot = new ArrayList<>();
-            boolean lopeta = false;
-            for (Pelaaja p : pelaajat) {
-                String siirto = p.annaSiirto();
-                if (!onkoOkSiirto(siirto)) {
-                    lopeta = true;
-                    break;
-                }
-                siirrot.add(siirto);
-                p.naytaSiirto(siirto);
-            }
-            if (lopeta) {
+            List<String> siirrot = kysyPelaajienSiirrot();
+            if (siirrot == null) {
                 break;
             }
             
             tuomari.kirjaaSiirto(siirrot.get(0), siirrot.get(1));
-            System.out.println(tuomari);
-            System.out.println();
+            kayttis.naytaTeksti(tuomari.toString());
+            kayttis.naytaTeksti("");
 
             for (int i = 0; i < pelaajat.size(); i++) {
                 List<String> muidenSiirrot = muidenPelaajienSiirrot(siirrot, i);
@@ -63,9 +55,22 @@ public class KiviPaperitSaksetPeli {
             }
         }
 
-        System.out.println();
-        System.out.println("Kiitos!");
-        System.out.println(tuomari);
+        kayttis.naytaTeksti("");
+        kayttis.naytaTeksti("Kiitos!");
+        kayttis.naytaTeksti(tuomari.toString());
+    }
+    
+    private List<String> kysyPelaajienSiirrot() {
+        List<String> siirrot = new ArrayList<>();
+        for (Pelaaja p : pelaajat) {
+            String siirto = p.annaSiirto();
+            if (!onkoOkSiirto(siirto)) {
+                return null;
+            }
+            siirrot.add(siirto);
+            p.naytaSiirto(siirto);
+        }
+        return siirrot;
     }
     
     private List<String> muidenPelaajienSiirrot(List<String> kaikkiSiirrot, int pelaajanIndeksi) {

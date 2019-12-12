@@ -1,7 +1,6 @@
 package ohtu.kivipaperisakset;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class IhmisPelaaja implements Pelaaja {
 
