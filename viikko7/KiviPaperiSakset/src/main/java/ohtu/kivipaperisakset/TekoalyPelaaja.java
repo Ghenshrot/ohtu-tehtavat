@@ -1,13 +1,17 @@
 package ohtu.kivipaperisakset;
 
-public class Tekoaly {
+import java.util.List;
 
-    int siirto;
+public class TekoalyPelaaja extends TietokonePelaaja {
 
-    public Tekoaly() {
+    private int siirto;
+
+    public TekoalyPelaaja(Kayttoliittyma kayttis) {
+        super(kayttis);
         siirto = 0;
     }
 
+    @Override
     public String annaSiirto() {
         siirto++;
         siirto = siirto % 3;
@@ -21,7 +25,7 @@ public class Tekoaly {
         }
     }
 
-    void asetaSiirto(String ekanSiirto) {
-        // ei tehdä mitään 
+    @Override
+    public void asetaToistenPelaajienSiirrot(List<String> siirrot) {
     }
 }
