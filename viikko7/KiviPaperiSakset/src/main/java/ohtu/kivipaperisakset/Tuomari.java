@@ -65,6 +65,7 @@ public class Tuomari {
         return false;
     }
 
+    @Override
     public String toString() {
         String s = "Pelitilanne: ";
         for (int i = 0; i < pelaajat.size(); i++) {

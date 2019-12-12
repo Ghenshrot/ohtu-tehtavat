@@ -34,15 +34,15 @@ public abstract class Pelaaja {
         return kayttis;
     }
     
-    public String getNimi() {
+    public final String getNimi() {
         return nimi;
     }
     
-    public void lisaaPisteita(int maara) {
+    public final void lisaaPisteita(int maara) {
         this.pisteet += maara;
     }
     
-    public int getPisteet() {
+    public final int getPisteet() {
         return this.pisteet;
     }
 }
