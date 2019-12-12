@@ -6,9 +6,7 @@
 package ohtu.kivipaperisakset;
 
 import ohtu.kivipaperisakset.kayttoliittyma.Kayttoliittyma;
-import ohtu.kivipaperisakset.pelaaja.TekoalyPelaaja;
 import ohtu.kivipaperisakset.pelaaja.Pelaaja;
-import ohtu.kivipaperisakset.pelaaja.IhmisPelaaja;
 import java.util.ArrayList;
 import java.util.List;
 
