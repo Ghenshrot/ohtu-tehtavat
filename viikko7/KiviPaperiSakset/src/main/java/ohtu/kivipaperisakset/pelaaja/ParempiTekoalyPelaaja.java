@@ -59,10 +59,10 @@ public class ParempiTekoalyPelaaja extends TietokonePelaaja {
 
     @Override
     public void asetaToistenPelaajienSiirrot(List<String> siirrot) {
-        if (siirrot.size() != 1) {
-            throw new IllegalArgumentException("Vain yhden pelaajan siirtojen muistaminen on tuettu.");
-        }
-
+        siirrot.forEach(s -> lisaaSiirto(s));
+    }
+    
+    private void lisaaSiirto(String siirto) {
         // jos muisti täyttyy, unohdetaan viimeinen alkio
         if (vapaaMuistiIndeksi == muisti.length) {
             for (int i = 1; i < muisti.length; i++) {
@@ -72,7 +72,7 @@ public class ParempiTekoalyPelaaja extends TietokonePelaaja {
             vapaaMuistiIndeksi--;
         }
 
-        muisti[vapaaMuistiIndeksi] = siirrot.get(0);
+        muisti[vapaaMuistiIndeksi] = siirto;
         vapaaMuistiIndeksi++;
     }
 }
