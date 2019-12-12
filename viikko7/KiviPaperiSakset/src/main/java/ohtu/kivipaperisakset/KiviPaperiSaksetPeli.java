@@ -5,6 +5,10 @@
  */
 package ohtu.kivipaperisakset;
 
+import ohtu.kivipaperisakset.kayttoliittyma.Kayttoliittyma;
+import ohtu.kivipaperisakset.pelaaja.TekoalyPelaaja;
+import ohtu.kivipaperisakset.pelaaja.Pelaaja;
+import ohtu.kivipaperisakset.pelaaja.IhmisPelaaja;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,19 +17,6 @@ import java.util.List;
  * @author Joni Yrjänä <joni.yrjana@helsinki.fi>
  */
 public class KiviPaperiSaksetPeli {
-    public static Pelaaja annaIhmispelaaja(Kayttoliittyma kayttis, String nimi) {
-        return new IhmisPelaaja(kayttis, nimi);
-    }
-    
-    public static Pelaaja annaTekoalyPelaaja(Kayttoliittyma kayttis) {
-        return new TekoalyPelaaja(kayttis);
-    }
-    
-    public static Pelaaja annaParempiTekoAlyPelaaja(Kayttoliittyma kayttis) {
-        return new ParempiTekoalyPelaaja(kayttis, 20);
-    }
-
-    
     private final Kayttoliittyma kayttis;
     private final Tuomari        tuomari;
     private final List<Pelaaja>  pelaajat;

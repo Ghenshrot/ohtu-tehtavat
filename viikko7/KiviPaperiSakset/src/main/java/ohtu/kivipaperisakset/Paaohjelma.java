@@ -1,9 +1,13 @@
 package ohtu.kivipaperisakset;
 
+import ohtu.kivipaperisakset.kayttoliittyma.KonsoliKayttoliittyma;
+import ohtu.kivipaperisakset.kayttoliittyma.Kayttoliittyma;
+import ohtu.kivipaperisakset.pelaaja.Pelaaja;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import ohtu.kivipaperisakset.pelaaja.PelaajaTehdas;
 
 public class Paaohjelma {
 
@@ -42,20 +46,20 @@ public class Paaohjelma {
     }
     
     private static boolean alustaPeliIhmistaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
-        pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, "A"));
-        pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, "B"));
+        pelaajat.add(PelaajaTehdas.annaIhmispelaaja(kayttis, "A"));
+        pelaajat.add(PelaajaTehdas.annaIhmispelaaja(kayttis, "B"));
         return true;
     }
 
     private static boolean alustaPeliTekoalyaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
-        pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, ""));
-        pelaajat.add(KiviPaperiSaksetPeli.annaTekoalyPelaaja(kayttis));
+        pelaajat.add(PelaajaTehdas.annaIhmispelaaja(kayttis, ""));
+        pelaajat.add(PelaajaTehdas.annaTekoalyPelaaja(kayttis));
         return true;
     }
     
     private static boolean alustaPeliParannettuaTekoalyaVastaan(Kayttoliittyma kayttis, List<Pelaaja> pelaajat) {
-        pelaajat.add(KiviPaperiSaksetPeli.annaIhmispelaaja(kayttis, ""));
-        pelaajat.add(KiviPaperiSaksetPeli.annaParempiTekoAlyPelaaja(kayttis));
+        pelaajat.add(PelaajaTehdas.annaIhmispelaaja(kayttis, ""));
+        pelaajat.add(PelaajaTehdas.annaParempiTekoAlyPelaaja(kayttis));
         return true;
     }
 

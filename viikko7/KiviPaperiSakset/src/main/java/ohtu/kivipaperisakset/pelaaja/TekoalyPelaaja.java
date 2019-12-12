@@ -1,6 +1,7 @@
-package ohtu.kivipaperisakset;
+package ohtu.kivipaperisakset.pelaaja;
 
 import java.util.List;
+import ohtu.kivipaperisakset.kayttoliittyma.Kayttoliittyma;
 
 public class TekoalyPelaaja extends TietokonePelaaja {
 

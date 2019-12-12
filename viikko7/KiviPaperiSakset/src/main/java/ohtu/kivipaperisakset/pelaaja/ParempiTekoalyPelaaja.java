@@ -1,6 +1,8 @@
-package ohtu.kivipaperisakset;
+package ohtu.kivipaperisakset.pelaaja;
 
 // "Muistava tekoäly"
+import ohtu.kivipaperisakset.kayttoliittyma.Kayttoliittyma;
+import ohtu.kivipaperisakset.pelaaja.TietokonePelaaja;
 import java.util.List;
 
 public class ParempiTekoalyPelaaja extends TietokonePelaaja {
