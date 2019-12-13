@@ -19,7 +19,7 @@ import ohtu.kivipaperisakset.pelaaja.PelaajaTehdas;
  */
 public class Pelitehdas {
     
-    private static Random random = new Random();
+    private final static Random SATTUMA = new Random();
     
     public static Peli peliIhmistaVastaan(Kayttoliittyma kayttis) {
         return luoPeli("ihmistä vastaan", kayttis, 
@@ -47,14 +47,14 @@ public class Pelitehdas {
     }
 
     public static Peli peliSatunnaistaMaaraaSatunnaistaTekoalyaVastaan(Kayttoliittyma kayttis) {
-        return peliSatunnaisiaTekoalyjaVastaan("satunnaista määrää (3..10) satunnaista tekoälyä vastaan", kayttis, 3 + random.nextInt(7));
+        return peliSatunnaisiaTekoalyjaVastaan("satunnaista määrää (3..10) satunnaista tekoälyä vastaan", kayttis, 3 + SATTUMA.nextInt(7));
     }
 
     public static Peli peliSatunnaisiaTekoalyjaVastaan(String nimi, Kayttoliittyma kayttis, int tekoalypelaajienLkm) {
         Pelaaja[] pelaajat = new Pelaaja[1 + tekoalypelaajienLkm];
         pelaajat[0] = PelaajaTehdas.annaIhmispelaaja(kayttis, "");
         for (int i = 0; i < tekoalypelaajienLkm; i++) {
-            if (random.nextBoolean()) {
+            if (SATTUMA.nextBoolean()) {
                 pelaajat[1 + i] = PelaajaTehdas.annaTekoalyPelaaja(kayttis);
             } else {
                 pelaajat[1 + i] = PelaajaTehdas.annaParempiTekoAlyPelaaja(kayttis);
