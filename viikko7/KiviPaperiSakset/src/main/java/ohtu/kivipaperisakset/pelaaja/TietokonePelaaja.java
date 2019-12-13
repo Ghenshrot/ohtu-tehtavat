@@ -5,6 +5,7 @@
  */
 package ohtu.kivipaperisakset.pelaaja;
 
+import ohtu.kivipaperisakset.Siirto;
 import ohtu.kivipaperisakset.kayttoliittyma.Kayttoliittyma;
 
 /**
@@ -18,7 +19,7 @@ public abstract class TietokonePelaaja extends Pelaaja {
     }
     
     @Override
-    public void naytaSiirto(String siirto) {
+    public void naytaSiirto(Siirto siirto) {
         getKayttoliittyma().naytaTeksti(this.getNimi() + " valitsi: " + siirto);
     }
 }

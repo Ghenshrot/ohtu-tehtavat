@@ -3,25 +3,26 @@ package ohtu.kivipaperisakset.pelaaja;
 // "Muistava tekoäly"
 import ohtu.kivipaperisakset.kayttoliittyma.Kayttoliittyma;
 import java.util.List;
+import ohtu.kivipaperisakset.Siirto;
 
 public class ParempiTekoalyPelaaja extends TietokonePelaaja {
 
-    private final String[] muisti;
+    private final Siirto.SIIRTO[] muisti;
     private int vapaaMuistiIndeksi;
 
     public ParempiTekoalyPelaaja(Kayttoliittyma kayttis, int muistinKoko) {
         super(kayttis);
-        muisti = new String[muistinKoko];
+        muisti = new Siirto.SIIRTO[muistinKoko];
         vapaaMuistiIndeksi = 0;
     }
 
     @Override
-    public String annaSiirto() {
+    public Siirto annaSiirto() {
         if (vapaaMuistiIndeksi == 0 || vapaaMuistiIndeksi == 1) {
-            return "k";
+            return new Siirto(Siirto.SIIRTO.KIVI);
         }
 
-        String viimeisinSiirto = muisti[vapaaMuistiIndeksi - 1];
+        Siirto.SIIRTO viimeisinSiirto = muisti[vapaaMuistiIndeksi - 1];
 
         int k = 0;
         int p = 0;
@@ -29,14 +30,12 @@ public class ParempiTekoalyPelaaja extends TietokonePelaaja {
 
         for (int i = 0; i < vapaaMuistiIndeksi - 1; i++) {
             if (viimeisinSiirto.equals(muisti[i])) {
-                String seuraava = muisti[i + 1];
+                Siirto.SIIRTO seuraava = muisti[i + 1];
 
-                if ("k".equals(seuraava)) {
-                    k++;
-                } else if ("p".equals(seuraava)) {
-                    p++;
-                } else {
-                    s++;
+                switch (seuraava) {
+                    case KIVI:   k++; break;
+                    case PAPERI: p++; break;
+                    case SAKSET: s++; break;
                 }
             }
         }
@@ -46,11 +45,11 @@ public class ParempiTekoalyPelaaja extends TietokonePelaaja {
         // - jos papereita eniten, annetaan aina sakset
         // muulloin annetaan aina kivi
         if (k > p && k > s) {
-            return "p";
+            return new Siirto(Siirto.SIIRTO.PAPERI);
         } else if (p > k && p > s) {
-            return "s";
+            return new Siirto(Siirto.SIIRTO.SAKSET);
         } else {
-            return "k";
+            return new Siirto(Siirto.SIIRTO.KIVI);
         }
 
         // Tehokkaampiakin tapoja löytyy, mutta niistä lisää 
@@ -58,11 +57,13 @@ public class ParempiTekoalyPelaaja extends TietokonePelaaja {
     }
 
     @Override
-    public void asetaToistenPelaajienSiirrot(List<String> siirrot) {
-        siirrot.forEach(s -> lisaaSiirto(s));
+    public void asetaToistenPelaajienSiirrot(List<Siirto> siirrot) {
+        siirrot.forEach(s ->
+                lisaaSiirto(s.getTyyppi())
+        );
     }
     
-    private void lisaaSiirto(String siirto) {
+    private void lisaaSiirto(Siirto.SIIRTO siirto) {
         // jos muisti täyttyy, unohdetaan viimeinen alkio
         if (vapaaMuistiIndeksi == muisti.length) {
             for (int i = 1; i < muisti.length; i++) {

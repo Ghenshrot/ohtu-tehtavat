@@ -15,7 +15,7 @@ public class Tuomari {
         this.tasapelit = 0;
     }
 
-    public void kirjaaSiirrot(List<String> siirrot) {
+    public void kirjaaSiirrot(List<Siirto> siirrot) {
         int voittaja = etsiVoittaja(siirrot);
         if (voittaja >= 0) {
             pelaajat.get(voittaja).lisaaPisteita(1);
@@ -24,7 +24,7 @@ public class Tuomari {
         }
     }
     
-    private int etsiVoittaja(List<String> siirrot) {
+    private int etsiVoittaja(List<Siirto> siirrot) {
         for (int i = 0; i < siirrot.size(); i++) {
             boolean voittaa = true;
             for (int j = 0; j < siirrot.size(); j++) {
@@ -43,22 +43,20 @@ public class Tuomari {
         return -1;
     }
 
-    // sisäinen metodi, jolla tarkastetaan tuliko tasapeli
-    private boolean tasapeli(String eka, String toka) {
-        if (eka.equals(toka)) {
-            return true;
-        }
-
-        return false;
-    }
-
     // sisäinen metodi joka tarkastaa voittaako eka pelaaja tokan
-    private boolean ekaVoittaa(String eka, String toka) {
-        if ("k".equals(eka) && "s".equals(toka)) {
+    private boolean ekaVoittaa(Siirto eka, Siirto toka) {
+        Siirto.SIIRTO seka  = eka.getTyyppi();
+        Siirto.SIIRTO stoka = toka.getTyyppi();
+        
+        Siirto.SIIRTO kivi   = Siirto.SIIRTO.KIVI;
+        Siirto.SIIRTO paperi = Siirto.SIIRTO.PAPERI;
+        Siirto.SIIRTO sakset = Siirto.SIIRTO.SAKSET;
+        
+        if (seka == kivi && stoka == sakset) {
             return true;
-        } else if ("s".equals(eka) && "p".equals(toka)) {
+        } else if (seka == sakset && stoka == paperi) {
             return true;
-        } else if ("p".equals(eka) && "k".equals(toka)) {
+        } else if (seka == paperi && stoka == kivi) {
             return true;
         }
 

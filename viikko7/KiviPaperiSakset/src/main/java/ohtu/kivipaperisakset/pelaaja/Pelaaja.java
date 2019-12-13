@@ -6,6 +6,7 @@
 package ohtu.kivipaperisakset.pelaaja;
 
 import java.util.List;
+import ohtu.kivipaperisakset.Siirto;
 import ohtu.kivipaperisakset.kayttoliittyma.Kayttoliittyma;
 
 /**
@@ -22,12 +23,12 @@ public abstract class Pelaaja {
         this.nimi    = nimi;
         this.pisteet = 0;
     }
-    public abstract String annaSiirto();
+    public abstract Siirto annaSiirto();
     
-    public void naytaSiirto(String siirto) {
+    public void naytaSiirto(Siirto siirto) {
     }
     
-    public void asetaToistenPelaajienSiirrot(List<String> siirrot) {
+    public void asetaToistenPelaajienSiirrot(List<Siirto> siirrot) {
     }
     
     protected Kayttoliittyma getKayttoliittyma() {
