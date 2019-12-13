@@ -45,7 +45,7 @@ public class Peli {
             kayttis.naytaTeksti("");
 
             for (int i = 0; i < pelaajat.size(); i++) {
-                List<Siirto> muidenSiirrot = muidenPelaajienSiirrot(siirrot, i);
+                List<Siirto> muidenSiirrot = toistenPelaajienSiirrot(siirrot, i);
                 pelaajat.get(i).asetaToistenPelaajienSiirrot(muidenSiirrot);
             }
         }
@@ -68,7 +68,7 @@ public class Peli {
         return siirrot;
     }
     
-    private List<Siirto> muidenPelaajienSiirrot(List<Siirto> kaikkiSiirrot, int pelaajanIndeksi) {
+    private List<Siirto> toistenPelaajienSiirrot(List<Siirto> kaikkiSiirrot, int pelaajanIndeksi) {
         List<Siirto> muidenSiirrot = new ArrayList<>();
         for (int i = 0; i < pelaajat.size(); i++) {
             if (i == pelaajanIndeksi) {
