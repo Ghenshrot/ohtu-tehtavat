@@ -31,7 +31,7 @@ public abstract class Pelaaja {
     public void asetaToistenPelaajienSiirrot(List<Siirto> siirrot) {
     }
     
-    protected Kayttoliittyma getKayttoliittyma() {
+    protected final Kayttoliittyma getKayttoliittyma() {
         return kayttis;
     }
     

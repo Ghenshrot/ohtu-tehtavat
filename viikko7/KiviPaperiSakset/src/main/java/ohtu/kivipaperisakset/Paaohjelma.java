@@ -20,7 +20,8 @@ public class Paaohjelma {
 
             kayttis.naytaTeksti("\nValitse pelataanko");
             pelityypit.keySet().forEach(k ->
-                    kayttis.naytaTeksti(" (" + k + ") " + pelityypit.get(k).getNimi()));
+                    kayttis.naytaTeksti(" (" + k + ") " + pelityypit.get(k).getNimi())
+            );
             kayttis.naytaTeksti("muilla valinnoilla lopetataan");
 
             String vastaus = kayttis.lueSyote("");
