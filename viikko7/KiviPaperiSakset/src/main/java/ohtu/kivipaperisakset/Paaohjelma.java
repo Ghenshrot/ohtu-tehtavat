@@ -10,14 +10,14 @@ public class Paaohjelma {
     public static void main(String[] args) {
         Kayttoliittyma kayttis = new KonsoliKayttoliittyma(System.out, System.in);
         
-        Map<String, Peli> pelityypit = new HashMap<>();
-        pelityypit.put("a", Pelitehdas.peliIhmistaVastaan(kayttis));
-        pelityypit.put("b", Pelitehdas.peliTekoalyaVastaan(kayttis));
-        pelityypit.put("c", Pelitehdas.peliParannettuaTekoalyaVastaan(kayttis));
-        pelityypit.put("d", Pelitehdas.peliKahtaSatunnaistaTekoalyaVastaan(kayttis));
-        pelityypit.put("e", Pelitehdas.peliSatunnaistaMaaraaSatunnaistaTekoalyaVastaan(kayttis));
-
         while (true) {
+            Map<String, Peli> pelityypit = new HashMap<>();
+            pelityypit.put("a", Pelitehdas.peliIhmistaVastaan(kayttis));
+            pelityypit.put("b", Pelitehdas.peliTekoalyaVastaan(kayttis));
+            pelityypit.put("c", Pelitehdas.peliParannettuaTekoalyaVastaan(kayttis));
+            pelityypit.put("d", Pelitehdas.peliKahtaSatunnaistaTekoalyaVastaan(kayttis));
+            pelityypit.put("e", Pelitehdas.peliSatunnaistaMaaraaSatunnaistaTekoalyaVastaan(kayttis));
+
             kayttis.naytaTeksti("\nValitse pelataanko");
             pelityypit.keySet().forEach(k ->
                     kayttis.naytaTeksti(" (" + k + ") " + pelityypit.get(k).getNimi()));
