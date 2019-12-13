@@ -45,8 +45,8 @@ public class Peli {
             kayttis.naytaTeksti("");
 
             for (int i = 0; i < pelaajat.size(); i++) {
-                List<Siirto> muidenSiirrot = toistenPelaajienSiirrot(siirrot, i);
-                pelaajat.get(i).asetaToistenPelaajienSiirrot(muidenSiirrot);
+                List<Siirto> toistenSiirrot = toistenPelaajienSiirrot(siirrot, i);
+                pelaajat.get(i).asetaToistenPelaajienSiirrot(toistenSiirrot);
             }
         }
 
