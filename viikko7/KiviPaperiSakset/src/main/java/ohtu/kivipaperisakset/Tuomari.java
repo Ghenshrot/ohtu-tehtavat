@@ -1,7 +1,5 @@
 package ohtu.kivipaperisakset;
 
-// Tuomari pitää kirjaa ensimmäisen ja toisen pelaajan pisteistä sekä tasapelien määrästä.
-
 import java.util.List;
 import ohtu.kivipaperisakset.pelaaja.Pelaaja;
 
@@ -43,7 +41,6 @@ public class Tuomari {
         return -1;
     }
 
-    // sisäinen metodi joka tarkastaa voittaako eka pelaaja tokan
     private boolean ekaVoittaa(Siirto eka, Siirto toka) {
         Siirto.SIIRTO seka  = eka.getTyyppi();
         Siirto.SIIRTO stoka = toka.getTyyppi();
